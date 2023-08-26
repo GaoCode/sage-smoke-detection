@@ -1,3 +1,13 @@
+# -t flag tags your image.
+docker build -t sagecontinuum/sage-smoke-detection:0.1.0 .
+
+docker run -v ${PWD}/pywaggle-logs:/src/pywaggle-logs \
+    --rm -it --entrypoint bash sagecontinuum/sage-smoke-detection:0.1.0
+
+docker run -it sagecontinuum/sage-smoke-detection:0.1.0 bash
+
+docker container exec -it  sagecontinuum/sage-smoke-detection:0.1.0 bash
+
 docker run  \
     -v ${PWD}/pywaggle-logs:/src/pywaggle-logs \
     --env PYWAGGLE_LOG_DIR=pywaggle-logs sagecontinuum/sage-smoke-detection:0.1.0 \
