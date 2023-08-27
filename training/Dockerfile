@@ -2,6 +2,13 @@ ARG cuda_version=10.0
 ARG cudnn_version=7
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel
 
+# ARG cuda_version=11.2.2
+# ARG cudnn_version=8
+# FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel
+
+# RUN rm /etc/apt/sources.list.d/cuda.list
+# RUN rm /etc/apt/sources.list.d/nvidia-ml.list
+
 RUN apt-get update \
   && apt-get install -y \
   python3-dev \
@@ -36,6 +43,6 @@ ENV LC_ALL="C.UTF-8" \
     WAGGLE_PLUGIN_REF="https://github.com/iperezx/edge-plugins/tree/master/plugin-smokedetect" \
     SAGE_USER_TOKEN=${SAGE_USER_TOKEN} \
     SAGE_HOST=${SAGE_HOST} \
-    BUCKET_ID_MODEL=${BUCKET_ID_MODEL} 
+    BUCKET_ID_MODEL=${BUCKET_ID_MODEL}
 
 WORKDIR /userdata/kerasData
