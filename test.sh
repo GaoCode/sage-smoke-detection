@@ -12,3 +12,14 @@ docker run  \
     -v ${PWD}/pywaggle-logs:/src/pywaggle-logs \
     --env PYWAGGLE_LOG_DIR=pywaggle-logs sagecontinuum/sage-smoke-detection:0.1.0 \
     -c scr/20190610-Pauma-bh-w-mobo-c.mp4
+
+docker run  \
+    -v ${PWD}/pywaggle-logs:/src/pywaggle-logs \
+    -v src:/src_git \
+    --env PYWAGGLE_LOG_DIR=pywaggle-logs \
+    --entrypoint bash \
+    sagecontinuum/sage-smoke-detection:0.1.0
+
+docker run -v ${PWD}/pywaggle-logs:/src/pywaggle-logs -v ${PWD}/src/:/src_git \
+    --env PYWAGGLE_LOG_DIR=pywaggle-logs \
+    --rm -it --entrypoint bash sagecontinuum/sage-smoke-detection:0.1.0
